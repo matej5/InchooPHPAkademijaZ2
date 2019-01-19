@@ -28,10 +28,10 @@
         //check if arry have empty slots and delete them
         $array = array_filter($array);
 
-        $size = intval(floor(sqrt(max($array))) + 1);
-
         //test if it is empty to jump over because there is no data to show
         if(!empty($array)) {
+
+            $size = intval(floor(sqrt(max($array))) + 1);
 
             //after first larger num than average change to false
             $firstAfterAvg = true;
