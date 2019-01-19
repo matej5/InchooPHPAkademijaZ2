@@ -9,9 +9,21 @@
     <title>Matej Štajduhar</title>
 </head>
 <body>
-    <form action="table.php" method="post">
-        <input type="hidden" name="num" value="1,4,a2,4,4,54dfg,38,234,5,4,3,32,345,156,23,24" required>
-        <input type="submit" value="Go to table">
-    </form>
+    <div id="form">
+        <div id="cont">
+            <h4>Atuomatic send data</h4>
+            <form action="table.php" method="post">
+                <input type="hidden" name="num" value="1,4,a2,4,4,54dfg,38,234,5,4,3,32,345,156,23,24" required>
+                <input type="submit" value="Go to table">
+            </form>
+
+            <h4>Manualy send data</h4>
+            <form action="table.php" method="post">
+                Insert:
+                <input type="text" name="num" placeholder="e.g. 1, 2, 3, 4, ..." required>
+                <input type="submit">
+            </form>
+        </div>
+    </div>
 </body>
 </html>

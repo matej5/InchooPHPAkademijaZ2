@@ -16,20 +16,23 @@
             header('Location: index.html');
         }
 
-        //after first larger num than average change to false
-        $firstAfterAvg = true;
+        //get string combination with num and ','
+        $string = $_POST['num'];
+
+        //remove all characters except num and ,
+        $string = preg_replace('/[^0-9,]/', '', $string);
+
+        //store numbers from string into array seperated by coma
+        $array = explode(',', $string);
+
+        //check if arry have empty slots and delete them
+        $array = array_filter($array);
 
         //test if it is empty to jump over because there is no data to show
-        if(trim($_POST['num']) != "") {
+        if(!empty($array)) {
 
-            //get string combination with num and ','
-            $string = $_POST['num'];
-
-            //remove all characters except num and ,
-            $string = preg_replace('/[^0-9,]/', '', $string);
-
-            //store numbers from string into array seperated by coma
-            $array = explode(',', $string);
+            //after first larger num than average change to false
+            $firstAfterAvg = true;
 
             //2 for loops for to create grid 16 x 16
             for ($a = 0; $a < 16; $a++) {
@@ -68,7 +71,7 @@
     <?php
 
     //test if it is empty to jump over because there is no data to show
-    if(trim($_POST['num']) != "") {
+    if(!empty($array)) {
         print_r($array);
         echo '<br>';
         echo 'Average: ', array_sum($array) / count($array), '<br>';

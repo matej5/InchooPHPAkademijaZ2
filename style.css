@@ -1,9 +1,17 @@
-form{
+body{
+    background: rosybrown;
+}
+#form{
+    background: darkgray;
     position: absolute;
-    width: 100px;
-    height: 50px;
+    width: 200px;
     top: 50%;
     left: 50%;
-    margin-left: -50px;
-    margin-top: -25px;
+    margin-left: -100px;
+    margin-top: -100px;
+}
+
+#cont{
+    margin: 10px;
+    text-align: center;
 }
