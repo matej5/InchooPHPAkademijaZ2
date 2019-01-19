@@ -55,6 +55,8 @@
                 }
                 echo '</tr>';
             }
+        }else{
+            echo '<h1>No data has been received!</h1>';
         }
         ?>
     </table>
@@ -67,6 +69,8 @@
         echo '<br>';
         echo 'Average: ', array_sum($array) / count($array), '<br>';
         echo 'Cell size: ', sqrt(max($array)) + 1, '<br>';
+    }else {
+        echo '<h1>No data has been received!</h1>';
     }
     ?>
 </body>
