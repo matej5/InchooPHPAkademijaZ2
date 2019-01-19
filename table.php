@@ -11,6 +11,10 @@
     <!-- border-colapse used so <td> won't have spaces  -->
     <table style="border-collapse: collapse;">
         <?php
+        //if directly opened table.php it will redirect to index.html
+        if(!isset($_POST['num'])){
+            header('Location: index.html');
+        }
 
         //after first larger num than average change to false
         $firstAfterAvg = true;
