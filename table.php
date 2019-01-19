@@ -34,13 +34,13 @@
             //after first larger num than average change to false
             $firstAfterAvg = true;
 
-            //2 for loops for to create grid 16 x 16
-            for ($a = 0; $a < 16; $a++) {
+            //2 for loops for to create grid size of sqrt(max($array))+1
+            for ($a = 0; $a < intval(sqrt(max($array))) + 1; $a++) {
                 echo '<tr>';
-                for ($b = 0; $b < 16; $b++) {
+                for ($b = 0; $b < intval(sqrt(max($array))) + 1; $b++) {
 
                     //using max inside sqrt to get width and hight needed
-                    echo '<td style="border: 1px solid; width: ', sqrt(max($array)) + 1, 'px; height: ', sqrt(max($array)) + 1, 'px;">';
+                    echo '<td style="border: 1px solid; width: 20px; height: 20px;">';
                     foreach ($array as $i) {
 
                         //check if num of field is equal to num in array
@@ -75,7 +75,7 @@
         print_r($array);
         echo '<br>';
         echo 'Average: ', array_sum($array) / count($array), '<br>';
-        echo 'Cell size: ', sqrt(max($array)) + 1, '<br>';
+        echo 'Cell count: ', intval(sqrt(max($array))) + 1, 'x', intval(sqrt(max($array))) + 1, ' = ', pow(intval(sqrt(max($array))) + 1, 2) ,'<br>';
     }else {
         echo '<h1>No data has been received!</h1>';
     }
