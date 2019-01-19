@@ -36,7 +36,9 @@
                     foreach ($array as $i) {
 
                         //check if num of field is equal to num in array
-                        if ($a * 16 + $b + 1 == $i && $i%2 === 0) {
+                        //added $i * 1 so it will look at $i as integer instead of string to be able to use === operator
+                        //step above gives same result as intval() function but everyone will use that function
+                        if ($a * 16 + $b + 1 === $i*1 && $i%2 === 0) {
                             if($firstAfterAvg && $i > array_sum($array)/count($array)){
                                 echo '<b>',$i,'</b>';
                                 $firstAfterAvg = false;
