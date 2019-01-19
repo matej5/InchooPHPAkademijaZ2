@@ -24,8 +24,6 @@
         //store numbers from string into array seperated by coma
         $array = explode(',', $string);
 
-        print_r($array);
-
         //2 for loops for to create grid 16 x 16
         for($a = 0; $a <16; $a++) {
             echo '<tr>';
@@ -58,8 +56,10 @@
     </table>
     <hr>
     <?php
+    print_r($array);
+    echo '<br>';
     echo 'Average: ',array_sum($array)/count($array), '<br>';
-    echo 'Size: ',sqrt(max($array))+1, '<br>';
+    echo 'Cell size: ',sqrt(max($array))+1, '<br>';
     ?>
 </body>
 </html>
