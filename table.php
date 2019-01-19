@@ -15,6 +15,7 @@
         //after first larger num than average change to false
         $firstAfterAvg = true;
 
+        //test if it is empty to jump over because there is no data to show
         if(trim($_POST['num']) != "") {
 
             //get string combination with num and ','
@@ -59,6 +60,8 @@
     </table>
     <hr>
     <?php
+
+    //test if it is empty to jump over because there is no data to show
     if(trim($_POST['num']) != "") {
         print_r($array);
         echo '<br>';
