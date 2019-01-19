@@ -28,6 +28,8 @@
         //check if arry have empty slots and delete them
         $array = array_filter($array);
 
+        $size = intval(floor(sqrt(max($array))) + 1);
+
         //test if it is empty to jump over because there is no data to show
         if(!empty($array)) {
 
@@ -35,9 +37,9 @@
             $firstAfterAvg = true;
 
             //2 for loops for to create grid size of sqrt(max($array))+1
-            for ($a = 0; $a < intval(sqrt(max($array))) + 1; $a++) {
+            for ($a = 0; $a < $size; $a++) {
                 echo '<tr>';
-                for ($b = 0; $b < intval(sqrt(max($array))) + 1; $b++) {
+                for ($b = 0; $b < $size; $b++) {
 
                     //using max inside sqrt to get width and hight needed
                     echo '<td style="border: 1px solid; width: 20px; height: 20px;">';
@@ -46,7 +48,7 @@
                         //check if num of field is equal to num in array
                         //added $i * 1 so it will look at $i as integer instead of string to be able to use === operator
                         //step above gives same result as intval() function but everyone will use that function
-                        if ($a * 16 + $b + 1 === $i * 1 && $i % 2 === 0) {
+                        if (($a * $size + $b + 1 === $i * 1)&& ($i % 2 === 0)) {
                             if ($firstAfterAvg && $i > array_sum($array) / count($array)) {
                                 echo '<b>', $i, '</b>';
                                 $firstAfterAvg = false;
@@ -75,7 +77,7 @@
         print_r($array);
         echo '<br>';
         echo 'Average: ', array_sum($array) / count($array), '<br>';
-        echo 'Cell count: ', intval(sqrt(max($array))) + 1, 'x', intval(sqrt(max($array))) + 1, ' = ', pow(intval(sqrt(max($array))) + 1, 2) ,'<br>';
+        echo 'Cell count: ', $size, 'x', $size, ' = ', pow($size, 2), '<br>';
     }else {
         echo '<h1>No data has been received!</h1>';
     }
