@@ -15,30 +15,32 @@
         //after first larger num than average change to false
         $firstAfterAvg = true;
 
-        //get string combination with num and ','
-        $string = $_POST['num'];
+        if(trim($_POST['num']) != "") {
 
-        //remove all characters except num and ,
-        $string = preg_replace('/[^0-9,]/', '', $string);
+            //get string combination with num and ','
+            $string = $_POST['num'];
 
-        //store numbers from string into array seperated by coma
-        $array = explode(',', $string);
+            //remove all characters except num and ,
+            $string = preg_replace('/[^0-9,]/', '', $string);
 
-        //2 for loops for to create grid 16 x 16
-        for($a = 0; $a <16; $a++) {
-            echo '<tr>';
-            for ($b = 0; $b < 16; $b++) {
+            //store numbers from string into array seperated by coma
+            $array = explode(',', $string);
 
-                //using max inside sqrt to get width and hight needed
-                echo '<td style="border: 1px solid; width: ',sqrt(max($array))+1,'px; height: ',sqrt(max($array))+1,'px;">';
+            //2 for loops for to create grid 16 x 16
+            for ($a = 0; $a < 16; $a++) {
+                echo '<tr>';
+                for ($b = 0; $b < 16; $b++) {
+
+                    //using max inside sqrt to get width and hight needed
+                    echo '<td style="border: 1px solid; width: ', sqrt(max($array)) + 1, 'px; height: ', sqrt(max($array)) + 1, 'px;">';
                     foreach ($array as $i) {
 
                         //check if num of field is equal to num in array
                         //added $i * 1 so it will look at $i as integer instead of string to be able to use === operator
                         //step above gives same result as intval() function but everyone will use that function
-                        if ($a * 16 + $b + 1 === $i*1 && $i%2 === 0) {
-                            if($firstAfterAvg && $i > array_sum($array)/count($array)){
-                                echo '<b>',$i,'</b>';
+                        if ($a * 16 + $b + 1 === $i * 1 && $i % 2 === 0) {
+                            if ($firstAfterAvg && $i > array_sum($array) / count($array)) {
+                                echo '<b>', $i, '</b>';
                                 $firstAfterAvg = false;
                                 break;
                             }
@@ -48,18 +50,21 @@
                             break;
                         }
                     }
-                echo '</td>';
+                    echo '</td>';
+                }
+                echo '</tr>';
             }
-            echo '</tr>';
         }
         ?>
     </table>
     <hr>
     <?php
-    print_r($array);
-    echo '<br>';
-    echo 'Average: ',array_sum($array)/count($array), '<br>';
-    echo 'Cell size: ',sqrt(max($array))+1, '<br>';
+    if(trim($_POST['num']) != "") {
+        print_r($array);
+        echo '<br>';
+        echo 'Average: ', array_sum($array) / count($array), '<br>';
+        echo 'Cell size: ', sqrt(max($array)) + 1, '<br>';
+    }
     ?>
 </body>
 </html>
