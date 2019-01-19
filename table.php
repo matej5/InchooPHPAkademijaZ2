@@ -18,8 +18,13 @@
         //get string combination with num and ','
         $string = $_POST['num'];
 
+        //remove all characters except num and ,
+        $string = preg_replace('/[^0-9,]/', '', $string);
+
         //store numbers from string into array seperated by coma
         $array = explode(',', $string);
+
+        print_r($array);
 
         //2 for loops for to create grid 16 x 16
         for($a = 0; $a <16; $a++) {
@@ -31,7 +36,7 @@
                     foreach ($array as $i) {
 
                         //check if num of field is equal to num in array
-                        if ($a * 16 + $b + 1 == $i && $i%2 == 0) {
+                        if ($a * 16 + $b + 1 == $i && $i%2 === 0) {
                             if($firstAfterAvg && $i > array_sum($array)/count($array)){
                                 echo '<b>',$i,'</b>';
                                 $firstAfterAvg = false;
